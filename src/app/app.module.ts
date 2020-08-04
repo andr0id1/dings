@@ -7,6 +7,7 @@ import {CommentsService} from './service/comments.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { AssMannComponent } from './ass-mann/ass-mann.component';
+import {OrderService} from '../generated/api/order.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AssMannComponent } from './ass-mann/ass-mann.component';
     AppRoutingModule
   ],
   providers: [
-    CommentsService
+    CommentsService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

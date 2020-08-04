@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CommentsService} from '../service/comments.service';
 import {Comment} from '../model/Comment';
+import { OrderService } from 'src/generated/api/order.service';
+import { ModelOrder } from 'src/generated/model/modelOrder';
 
 @Component({
   selector: 'app-peter',
@@ -8,13 +10,16 @@ import {Comment} from '../model/Comment';
   styleUrls: ['./peter.component.css']
 })
 export class PeterComponent implements OnInit {
+  private orders: ModelOrder;
 
-  constructor(private commentsService: CommentsService) { }
+  constructor(private commentsService: CommentsService,
+              private orderService: OrderService) { }
 
   counter = 0;
   comment: Comment;
 
   ngOnInit(): void {
+    this.orderService.getOrders().subscribe(orders => this.orders = orders);
     const hallo = this.commentsService.getComment(2);
     hallo.subscribe((etwas: Comment) => this.comment = etwas);
   }
