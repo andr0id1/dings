@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "prestart": "npm run generate:api",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "generate:api": "openapi-generator generate -i https://my.sevdesk.de/swaggerJSON/swagger.json -g typescript-angular -o src/generated --additional-properties=\"ngVersion=10.0.5\"",
+
   },
   "private": true,
   "dependencies": {

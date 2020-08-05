@@ -6,8 +6,11 @@ import {PeterComponent} from './peter/peter.component';
 import {CommentsService} from './service/comments.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
-import { AssMannComponent } from './ass-mann/ass-mann.component';
+import {AssMannComponent} from './ass-mann/ass-mann.component';
 import {OrderService} from '../generated/api/order.service';
+import {environment} from '../environments/environment';
+import {BASE_PATH} from 'src/generated/variables';
+import {ApiModule} from 'src/generated/api.module';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,13 @@ import {OrderService} from '../generated/api/order.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ApiModule
   ],
   providers: [
     CommentsService,
-    OrderService
+    OrderService,
+    {provide: BASE_PATH, useValue: environment.apiEndpoint},
   ],
   bootstrap: [AppComponent]
 })
